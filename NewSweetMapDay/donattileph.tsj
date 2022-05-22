@@ -1,0 +1,14 @@
+{ "columns":2,
+ "image":"..\/Pics\/donattileph.png",
+ "imageheight":64,
+ "imagewidth":128,
+ "margin":0,
+ "name":"donattileph",
+ "spacing":0,
+ "tilecount":2,
+ "tiledversion":"1.8.4",
+ "tileheight":64,
+ "tilewidth":64,
+ "type":"tileset",
+ "version":"1.8"
+}

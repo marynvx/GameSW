@@ -1,0 +1,14 @@
+{ "columns":32,
+ "image":"..\/Pics\/tilefonbig.png",
+ "imageheight":1280,
+ "imagewidth":2048,
+ "margin":0,
+ "name":"tilefonbig",
+ "spacing":0,
+ "tilecount":640,
+ "tiledversion":"1.8.4",
+ "tileheight":64,
+ "tilewidth":64,
+ "type":"tileset",
+ "version":"1.8"
+}

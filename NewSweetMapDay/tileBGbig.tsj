@@ -1,0 +1,14 @@
+{ "columns":8,
+ "image":"..\/Pics\/tileBG.png",
+ "imageheight":640,
+ "imagewidth":1024,
+ "margin":0,
+ "name":"tileBG",
+ "spacing":0,
+ "tilecount":40,
+ "tiledversion":"1.8.4",
+ "tileheight":128,
+ "tilewidth":128,
+ "type":"tileset",
+ "version":"1.8"
+}

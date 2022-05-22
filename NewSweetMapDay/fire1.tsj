@@ -1,0 +1,14 @@
+{ "columns":1,
+ "image":"..\/Pics\/fire1.png",
+ "imageheight":128,
+ "imagewidth":100,
+ "margin":0,
+ "name":"fire1",
+ "spacing":0,
+ "tilecount":2,
+ "tiledversion":"1.8.4",
+ "tileheight":64,
+ "tilewidth":64,
+ "type":"tileset",
+ "version":"1.8"
+}

@@ -1,0 +1,14 @@
+{ "columns":16,
+ "image":"..\/Pics\/swearth.png",
+ "imageheight":64,
+ "imagewidth":1024,
+ "margin":0,
+ "name":"swearth",
+ "spacing":0,
+ "tilecount":16,
+ "tiledversion":"1.8.4",
+ "tileheight":64,
+ "tilewidth":64,
+ "type":"tileset",
+ "version":"1.8"
+}
