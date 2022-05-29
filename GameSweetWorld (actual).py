@@ -18,7 +18,6 @@ JUMP_MAX_HEIGHT = 140
 PLAYER_SPRITE_IMAGE_CHANGE_SPEED = 30
 
 WINIMAGE_SCALING = 1
-GAMEOVER_SCALING = 1
 
 ENEMY_SCALING = 0.5
 
@@ -57,7 +56,6 @@ class gameSW(arcade.Window):
         self.player_dy = PLAYER_Y_SPEED
 
         self.collide = False
-        self.gameover = False
 
         self.player_sprite_images = []
         self.player_sprite_images_left = []
@@ -81,8 +79,8 @@ class gameSW(arcade.Window):
 
         self.camera = arcade.Camera(self.width, self.height)
 
-        self.enemy_list = arcade.SpriteList()
         image_enemy = "Pics/fire.png"
+        self.enemy_list = arcade.SpriteList()
         self.enemy_sprite = arcade.Sprite(image_enemy, ENEMY_SCALING)
         self.enemy_sprite.center_x = 128
         self.enemy_sprite.center_y = 92
@@ -92,22 +90,16 @@ class gameSW(arcade.Window):
         self.enemy_sprite.facing_direction = 1
 
 
-
-        self.player_list = arcade.SpriteList()
-        image_source = "Pics/zefir1.png"
-
         win_image = "Pics/Win.png"
         self.win_text = arcade.Sprite(win_image, WINIMAGE_SCALING)
         self.win_text.center_x = 512
         self.win_text.center_y = 320
 
-        gameover_image = "Pics/GameOver.png"
-        self.gameover_text = arcade.Sprite(gameover_image, GAMEOVER_SCALING)
-        self.gameover_text.center_x = 512
-        self.gameover_text.center_y = 320
 
         self.coin_list = arcade.SpriteList(use_spatial_hash=True)
 
+        self.player_list = arcade.SpriteList()
+        image_source = "Pics/zefir1.png"
         self.player_sprite = arcade.Sprite(image_source, CHARACTER_SCALING)
         self.player_sprite.center_x = 64
         self.player_sprite.center_y = 92
@@ -174,6 +166,7 @@ class gameSW(arcade.Window):
                 self.score = "all"
                 arcade.play_sound(self.win_sound)
 
+
     def on_draw(self):
         self.clear()
         self.scene["BG"].draw()
@@ -198,9 +191,6 @@ class gameSW(arcade.Window):
 
         if self.score == "all":
             self.win_text.draw()
-
-        if self.gameover == True:
-            self.gameover_text.draw()
             
         self.camera.use()
 
@@ -221,19 +211,20 @@ class gameSW(arcade.Window):
 
     def calculate_collision(self):
 
+        self.collide = False #обнуляем
         for block in self.scene["Platforms"]:
             if (self.player_sprite.center_x + self.player_sprite.width / 2 >= block.center_x - block.width / 2 and self.player_sprite.center_x - self.player_sprite.width / 2 <= block.center_x + block.width / 2) \
                     and (self.player_sprite.center_y + self.player_sprite.height / 2 >= block.center_y - block.height / 2 and self.player_sprite.center_y - self.player_sprite.height / 2 <= block.center_y + block.height / 2):
-                self.collide = True    
+                self.collide = True
 
         
     def enemy_collision(self):
 
         if (self.player_sprite.center_x + self.player_sprite.width / 2 >= self.enemy_sprite.center_x - self.enemy_sprite.width / 2 and self.player_sprite.center_x - self.player_sprite.width / 2 <= self.enemy_sprite.center_x + self.enemy_sprite.width / 2) \
                     and (self.player_sprite.center_y + self.player_sprite.height / 2 >= self.enemy_sprite.center_y - self.enemy_sprite.height / 2 and self.player_sprite.center_y - self.player_sprite.height / 2 <= self.enemy_sprite.center_y + self.enemy_sprite.height / 2):
-                self.player_sprite.remove_from_sprite_lists()
-                self.gameover = True
                 arcade.play_sound(self.gameover_sound)
+                self.setup()
+                self.on_update(delta_time=2)
 
 
 
